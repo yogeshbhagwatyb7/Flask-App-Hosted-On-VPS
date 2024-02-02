@@ -14,7 +14,7 @@ variables:
   webAppName: 'py10-10'
 
   # Agent VM image name
-  vmImageName: 'testpool'
+  #vmImageName: 'testpool'
 
   # Environment name
   environmentName: 'py10-10'
@@ -31,7 +31,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      $(vmImageName)
+      testpool
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -67,7 +67,7 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      $(vmImageName)
+      testpool
     environment: $(environmentName)
     strategy:
       runOnce:
